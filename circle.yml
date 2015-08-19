@@ -1,11 +1,11 @@
 dependencies:
   cache_directories:
-    - $HOME/heroku-buildpack-nodejs
+    - heroku-buildpack-nodejs
   pre:
-    - if [[ ! -d heroku-buildpack-nodejs ]]; then sudo apt-get update; sudo apt-get install git-core; cd $HOME; git clone https://github.com/heroku/heroku-buildpack-nodejs.git; fi
+    - if [[ ! -d heroku-buildpack-nodejs ]]; then sudo apt-get update; sudo apt-get install git-core; git clone https://github.com/heroku/heroku-buildpack-nodejs.git; fi
 
 test:
   post:
-    - bash $HOME/heroku-buildpack-nodejs/bin/compile . /tmp
-    - tar -czvf $HOME/node-hello-world.tar.gz --exclude .git .
+    - bash heroku-buildpack-nodejs/bin/compile . /tmp
+    - tar -czvf $CIRCLE_ARTIFACTS/$CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1.tar.gz --exclude .git --exclude heroku-buildpack-nodejs .
 
