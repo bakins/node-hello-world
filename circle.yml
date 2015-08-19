@@ -6,4 +6,4 @@ dependencies:
 
 test:
   post:
-    - bash heroku-buildpack-nodejs/bin/compile .
+    - bash heroku-buildpack-nodejs/bin/compile . /tmp
