@@ -1,5 +1,6 @@
-var express = require('express');
-var expressStatsd = require('express-statsd');
+var express = require('express'),
+    expressStatsd = require('express-statsd'),
+    morgan = require('morgan')
 
 var app = express();
 
@@ -8,7 +9,8 @@ app.use(
         requestKey: "hello_world",
         host: (process.env.STATSD_SERVER || "127.0.0.1"),
         port: (process.env.STATSD_PORT || 8125)
-    })
+    }),
+    morgan('combined')
 );
 
 app.set('port', (process.env.PORT || 5000));

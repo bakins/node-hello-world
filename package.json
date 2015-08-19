@@ -9,7 +9,8 @@
     "dependencies": {
         "express": "~4.9.x",
         "express-statsd": "0.3.0",
-        "recluster": "0.4.0"
+        "recluster": "0.4.0",
+        "morgan": "1.6.1"
     },
     "engines": {
         "node": "0.12.2"
