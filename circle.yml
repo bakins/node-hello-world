@@ -1,8 +1,7 @@
-dependencies:
-  cache_directories:
-    - heroku-buildpack-nodejs
-  pre:
-    - if [[ ! -d heroku-buildpack-nodejs ]]; then sudo apt-get update; sudo apt-get install git-core; git clone https://github.com/heroku/heroku-buildpack-nodejs.git; fi
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
 
 test:
   post:
