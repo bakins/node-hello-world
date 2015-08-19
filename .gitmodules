@@ -1,0 +1,3 @@
+[submodule "heroku-buildpack-nodejs"]
+	path = heroku-buildpack-nodejs
+	url = https://github.com/heroku/heroku-buildpack-nodejs.git
