@@ -13,7 +13,7 @@
         "morgan": "1.6.1"
     },
     "engines": {
-        "node": "0.12.2"
+        "node": "0.12.7"
     },
     "scripts": {
         "start": "node cluster.js"
