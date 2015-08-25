@@ -18,6 +18,7 @@ test:
   post:
     - docker build -t $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
     - mkdir -p ~/docker; docker save $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 > ~/docker/image.tar
-    - docker export $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 | gzip -9 > $CIRCLE_ARTIFACTS/$CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1.tar.gz
+    - docker run --name=$CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1 $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 /bin/true
+    - docker export $CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1 | gzip -9 > $CIRCLE_ARTIFACTS/$CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1.tar.gz
 
 
