@@ -7,5 +7,5 @@ ADD . /app
 RUN cd app && \
     heroku-buildpack-nodejs/bin/compile . /tmp
 
-RUN apt-get clean &&\
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
