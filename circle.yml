@@ -8,8 +8,6 @@ dependencies:
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - docker build -t $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
-    - mkdir -p ~/docker; docker save $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 > ~/docker/image.tar
 
 checkout:
   post:
@@ -18,6 +16,8 @@ checkout:
 
 test:
   post:
+    - docker build -t $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 .
+    - mkdir -p ~/docker; docker save $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 > ~/docker/image.tar
     - docker export $CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1 | gzip -9 > $CIRCLE_ARTIFACTS/$CIRCLE_PROJECT_REPONAME-$CIRCLE_SHA1.tar.gz
 
 
