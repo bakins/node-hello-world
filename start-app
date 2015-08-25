@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+DIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
+export HOME=${DIR}
+
+if [ -d .profile.d ]; then
+    for F in .profile.d/*.sh; do
+	. $F
+    done
+fi
+
+node cluster.js
