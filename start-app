@@ -12,4 +12,4 @@ if [ -d .profile.d ]; then
     done
 fi
 
-node cluster.js
+exec node cluster.js
